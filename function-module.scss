@@ -1,0 +1,7 @@
+$remm: 16;
+
+@function px-to-rem($px-value) {
+    $remm: 16;
+    $rem-value: #{$px-value / $remm}rem;
+    @return $rem-value;
+}

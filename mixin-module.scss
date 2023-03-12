@@ -1,0 +1,10 @@
+@import "function-module.scss" ;
+
+@mixin articles ($color , $border-color, $font-size: px-to-rem(16)) {
+    padding: 20px;
+    border: 1px solid green;
+    text-align: center;
+    color: $color;
+    border: 1px solid $border-color;
+    font-size: $font-size;
+}

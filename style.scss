@@ -1,0 +1,114 @@
+@use "sass:color";
+@import "function-module.scss";
+@import "mixin-module.scss" ;
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        border:1px solid red;
+        h {
+            &1 {
+                color: green;
+                text-decoration: underline solid blue;   
+            }
+            &2 {
+                @extend h1;
+                padding: 1rem;
+                border: 1px solid red;
+                text-decoration: none;
+            } 
+        }
+        .fourbox {
+            display: flex;
+            justify-content: center;  
+            .blue-text {
+                @include articles(blue, green);
+            }
+            .red-text {
+                @include articles(red, green);
+            }
+        }
+        .green-text{
+            @include articles(green, blue, px-to-rem(24))
+        }
+        .boxes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: aliceblue;
+        }
+    }
+
+}
+
+@for $index from 1 to 4{
+    
+
+    
+        @if $index == 1 {
+            .fs-#{$index}rem {
+                    width: 45px;
+                    height: 45px;
+                    border: 1px solid black;
+                    font-size: #{$index}rem;
+                    margin: 20px;
+                             
+                }
+        }
+        @else if $index == 2 {
+            .fs-#{$index}rem {
+                    width: 45px;
+                    height: 45px;
+                    border: 1px solid black;
+                    font-size: #{$index}rem;
+                    margin: 10px;
+                    
+            }
+        }
+        @else {
+            .fs-#{$index}rem {
+                    width: 45px;
+                    height: 45px;
+                    border: 1px solid black;
+                    font-size: #{$index}rem;
+                    margin: 10px;
+                                   
+            }
+        }
+}
+
+
+$background-color: rgb(255, 255, 255);
+$text-color: rgb(0, 0, 0);
+$color-adjust-amount: 5%;
+
+@for $index from 1 to 20 {
+    @if $index ==11 {
+        .boxes div:nth-child(#{$index}) {
+            background-color: blue;
+            color: red;
+        }
+    }
+    @else {
+    .boxes div:nth-child(#{$index}) {
+        background-color: $background-color;
+        color: $text-color;
+    }
+    }
+  $background-color: color.adjust($background-color, $lightness: -$color-adjust-amount);
+  $text-color: color.adjust($text-color, $lightness: $color-adjust-amount);
+}
